@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -28,6 +28,8 @@ jobs:
       
     - name: Build
       run: npm run build
+      env:
+        BASE_PATH: /fraccinganimation/
       
     - name: Setup Pages
       uses: actions/configure-pages@v4
