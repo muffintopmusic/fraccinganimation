@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Site
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     
     steps:
@@ -30,7 +30,7 @@ jobs:
       run: npm run build
       env:
         BASE_PATH: /fraccinganimation/
-      
+        
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
@@ -39,6 +39,14 @@ jobs:
       with:
         path: './dist'
         
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
