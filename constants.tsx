@@ -1,0 +1,42 @@
+import { FractalParams } from './types';
+
+export const DEFAULT_FRACTAL_PARAMS: FractalParams = {
+  cReal: -0.75,
+  cImag: 0.1,
+  zoom: 1.0,
+  offsetX: 0,
+  offsetY: 0,
+  iterations: 64,
+  isJulia: false,
+  colorShift: 0.4,
+  animateC: true,
+  animationSpeed: 0.8,
+  animMag: 1.0,
+  exposure: 2.0,
+  foldSpeed: 1.2,
+  foldSplits: 2,
+  animDepth: 0.6,
+  yaw: 0,
+  roll: 0,
+  warp: 0,
+  mirrorHorizontal: false,
+  grayscale: false,
+  antialiasing: false,
+};
+
+export const FRACTAL_RANGES = {
+  cReal: { min: -2, max: 2, step: 0.01 },
+  cImag: { min: -2, max: 2, step: 0.01 },
+  zoom: { min: 0.1, max: 50, step: 0.01 },
+  iterations: { min: 16, max: 256, step: 1 },
+  colorShift: { min: 0, max: 6.28, step: 0.01 },
+  animationSpeed: { min: 0.1, max: 5, step: 0.01 },
+  animMag: { min: 0, max: 3, step: 0.01 },
+  exposure: { min: 0.1, max: 5, step: 0.01 },
+  foldSpeed: { min: 0.1, max: 5, step: 0.01 },
+  foldSplits: { min: 1, max: 8, step: 1 },
+  animDepth: { min: 0, max: 2, step: 0.01 },
+  yaw: { min: -180, max: 180, step: 1 },
+  roll: { min: -180, max: 180, step: 1 },
+  warp: { min: -2, max: 2, step: 0.01 },
+};

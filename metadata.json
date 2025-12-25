@@ -1,0 +1,5 @@
+{
+  "name": "Abyssal Fractal Explorer",
+  "description": "An interactive WebGL-powered fractal renderer based on the custom formula z = abs(z)/(z.x*z.y) + c, featuring Julia mode, real-time parameter tuning, and dynamic animation.",
+  "requestFramePermissions": []
+}

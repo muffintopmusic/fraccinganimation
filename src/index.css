@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+canvas {
+    display: block;
+}
+
+.glass-panel {
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom scrollbar for controls panel */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Clean range inputs for better layering */
+.slider-clean {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    outline: none;
+    margin: 0;
+}
+.slider-clean::-webkit-slider-runnable-track {
+    background: transparent;
+}
+.slider-clean::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 0;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    transition: transform 0.1s ease-out, background-color 0.1s ease-out;
+}
+.slider-clean:active::-webkit-slider-thumb {
+    transform: scale(1.4);
+    background-color: #ff0000;
+}
+
+/* Warehouse texture pattern */
+.warehouse-texture {
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.015) 0%, transparent 25%),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.02) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.008) 0%, transparent 40%),
+        linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.01) 49%, rgba(255,255,255,0.01) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(255,255,255,0.008) 49%, rgba(255,255,255,0.008) 51%, transparent 52%);
+    background-size: 200px 200px, 150px 150px, 300px 300px, 100px 100px, 120px 120px;
+    background-position: 0 0, 50px 50px, -100px -100px, 0 0, 25px 25px;
+}
