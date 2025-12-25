@@ -14,3 +14,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
+import './src/index.css';
