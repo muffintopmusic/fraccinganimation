@@ -186,6 +186,29 @@ const FractalCanvas: React.FC<FractalCanvasProps> = ({ params, onNavUpdate }) =>
     paramsRef.current = params;
   }, [params]);
 
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const canvas = canvasRef.current;
+      const gl = glRef.current;
+      if (!canvas || !gl) return;
+
+      if (document.fullscreenElement) {
+        canvas.width = screen.width;
+        canvas.height = screen.height;
+        gl.viewport(0, 0, screen.width, screen.height);
+      } else {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        gl.viewport(0, 0, window.innerWidth, window.innerHeight);
+      }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
     lastMousePos.current = { x: e.clientX, y: e.clientY };
@@ -310,9 +333,13 @@ const FractalCanvas: React.FC<FractalCanvasProps> = ({ params, onNavUpdate }) =>
       const uniforms = uniformsRef.current;
       if (!gl || !program || !canvas) return;
 
-      if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+      const isFullscreenMode = !!document.fullscreenElement;
+      const targetWidth = isFullscreenMode ? screen.width : window.innerWidth;
+      const targetHeight = isFullscreenMode ? screen.height : window.innerHeight;
+      
+      if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
         gl.viewport(0, 0, canvas.width, canvas.height);
       }
 
