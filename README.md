@@ -1,6 +1,6 @@
-# fraccinganimation
+# Fractal Animation
 
-Animated fractal visualization with React and WebGL.
+Animated fractal visualization with React and WebGL featuring fullscreen controls.
 
 ## Run Locally
 
